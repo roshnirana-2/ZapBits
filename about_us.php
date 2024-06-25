@@ -28,8 +28,8 @@ if (isset($_REQUEST["flg"]) && $_REQUEST["flg"] == "del") {
     <h1 class="dark:text-white-dar  pb-8 text-3xl font-bold">About Us</h1>
     <div class="panel mt-6 flex items-center  justify-between relative">
 
-        <button type="button" class="p-2 btn btn-primary m-1 add-btn" onclick="javascript:add_data()">
-            <i class="ri-add-line mr-1"></i> Add About Us</button>
+        <!-- <button type="button" class="p-2 btn btn-primary m-1 add-btn" onclick="javascript:add_data()">
+            <i class="ri-add-line mr-1"></i> Add About Us</button> -->
 
         <table id="myTable" class="table-hover whitespace-nowrap w-full"></table>
     </div>
@@ -52,11 +52,6 @@ function getActions(id) {
             <i class="ri-pencil-line text text-success"></i>
             </a>
             </li>
-            <li>
-            <a href="javascript:showAlert(` + id + `);" class='text-xl' x-tooltip="Delete">
-            <i class="ri-delete-bin-line text-danger"></i>
-            </a>
-            </li>
             </ul>`
 }
 document.addEventListener('alpine:init', () => {
@@ -76,7 +71,7 @@ document.addEventListener('alpine:init', () => {
                             ?>[
                             <?php echo $i; ?>,
 
-                            '<?php echo addslashes($row["description"]); ?>',
+                           '<?php echo addslashes($row["description"]); ?>',
                             '<img src="images/about/<?php echo addslashes($row["image"]); ?>" height="200" width="200" class="object-cover shadow rounded">',
 
                             getActions(<?php echo $row["srno"]; ?>, )

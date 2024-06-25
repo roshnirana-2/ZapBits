@@ -97,6 +97,7 @@ if (isset($_REQUEST["btn_update"])) {
 	}
 
 	try {
+		echo"UPDATE `about_us` SET `description`= $description,`image`=$PicFileName WHERE `srno`= $e_id";
 		$stmt = $obj->con1->prepare("UPDATE `about_us` SET `description`=?,`image`=? WHERE `srno`=?");
 		$stmt->bind_param("ssi", $description, $PicFileName, $e_id);
 		$Resp = $stmt->execute();
@@ -136,14 +137,16 @@ if (isset($_REQUEST["btn_update"])) {
 	<div class="panel mt-6">
 		<div class="mb-5">
 			<form class="space-y-5" method="post" enctype="multipart/form-data">
-                <div>
-					<label for="description">Description</label>
-					<input id="description" name="description" type="text" class="form-input" placeholder="Enter the description"
-						value="<?php echo (isset($mode)) ? $data['description'] : '' ?>" <?php echo isset($mode) && $mode == 'view' ? 'readonly' : '' ?> />
-				</div>
+			<div class="mb-4">
+                    <label for="quill">Description</label>
+                    <div id="editor1">
+                        <?php echo (isset($mode)) ? $data['description'] : '' ?>
+                    </div>
+                </div>
+                <input type="hidden" id="description" name="description">
 				<div <?php echo (isset($mode) && $mode == 'view') ? 'hidden' : '' ?>>
 					<label for="image">Image</label>
-					<input id="about_img" name="about_img" class="demo1" type="file" data_btn_text="Browse" required
+					<input id="about_img" name="about_img" class="demo1" type="file" data_btn_text="Browse"
 						onchange="readURL(this,'PreviewImage')" onchange="readURL(this,'PreviewImage')"
 						placeholder="drag and drop file here" />
 				</div>
@@ -179,38 +182,33 @@ if (isset($_REQUEST["btn_update"])) {
 		window.location = "about_us.php";
 	}
 
-	var quill1 = new Quill('#editor1', {
-		theme: 'snow',
-	});
-	var toolbar1 = quill1.container.previousSibling;
-	toolbar1.querySelector('.ql-picker').setAttribute('title', 'Font Size');
-	toolbar1.querySelector('button.ql-bold').setAttribute('title', 'Bold');
-	toolbar1.querySelector('button.ql-italic').setAttribute('title', 'Italic');
-	toolbar1.querySelector('button.ql-link').setAttribute('title', 'Link');
-	toolbar1.querySelector('button.ql-underline').setAttribute('title', 'Underline');
-	toolbar1.querySelector('button.ql-clean').setAttribute('title', 'Clear Formatting');
-	toolbar1.querySelector('[value=ordered]').setAttribute('title', 'Ordered List');
-	toolbar1.querySelector('[value=bullet]').setAttribute('title', 'Bullet List');
+	var quill = new Quill('#editor1', {
+        theme: 'snow',
+    });
+    var toolbar = quill.container.previousSibling;
+    toolbar.querySelector('.ql-picker').setAttribute('title', 'Font Size');
+    toolbar.querySelector('button.ql-bold').setAttribute('title', 'Bold');
+    toolbar.querySelector('button.ql-italic').setAttribute('title', 'Italic');
+    toolbar.querySelector('button.ql-link').setAttribute('title', 'Link');
+    toolbar.querySelector('button.ql-underline').setAttribute('title', 'Underline');
+    toolbar.querySelector('button.ql-clean').setAttribute('title', 'Clear Formatting');
+    toolbar.querySelector('[value=ordered]').setAttribute('title', 'Ordered List');
+    toolbar.querySelector('[value=bullet]').setAttribute('title', 'Bullet List');
 
-	function setQuillInput() {
-		let quillInput1 = document.getElementById("quill-input1");
-		quillInput1.value = quill1.root.innerHTML;
 
-		let val1 = quillInput1.value.replace(/<[^>]*>/g, '');
-		
-		if (val1.trim() == '') {
-			coloredToast("danger", 'Please add something in Description.');
-			return false;
-		}
-		<?php if(!isset($mode)){ ?>
-         else if (<?php echo (!isset($mode))?true:false ?>) {
-            return checkImage();
-        } 
-        <?php } ?> 
-		// else{
-		// 	return true;
-		// }
-	}
+    function setQuillInput() {
+        let quillInput = document.getElementById("description");
+        quillInput.value = quill.root.innerHTML;
+        let val1 = quillInput.value.replace(/<[^>]*>/g, '');
+
+        if (val1.trim() == '') {
+            coloredToast("danger", 'Please add something in Description.');
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
 
 	function readURL(input, preview) {
 		if (input.files && input.files[0]) {
