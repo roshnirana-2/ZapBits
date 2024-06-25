@@ -3,11 +3,11 @@
 	$obj = new DB_Connect();
 	$s = $_REQUEST["sid"];
 	$ctid = $_REQUEST['ctid'];
-	$stmt = $obj->con1->prepare("select * from city WHERE status='enable' and state_id=?");
+	$stmt = $obj->con1->prepare("select * from city WHERE status='Enable' and state_id=?");
 	$stmt->bind_param("i", $s);
 	$stmt->execute();
 	$result = $stmt->get_result();
-?>
+?>	
 
 <option value="">Choose City</option>
 

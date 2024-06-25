@@ -150,7 +150,7 @@ function is_image($filename)
 
 				<div <?php echo (isset($mode) && $mode == 'view') ? 'hidden' : '' ?>>
 					<label for="image">Image</label>
-					<input id="banner_img" name="banner_img" class="demo1" type="file" data_btn_text="Browse" onchange="readURL(this,'PreviewImage')" accept="image/*, video/*" onchange="readURL(this,'PreviewImage')" placeholder="drag and drop file here" />
+					<input id="banner_img" name="banner_img" class="demo1" type="file" data_btn_text="Browse" onchange="readURL(this,'PreviewImage')" accept="image/*, video/*" onchange="readURL(this,'PreviewImage')" placeholder="drag and drop file here" required/>
 				</div>
 				<div>
 					<h4 class="font-bold text-primary mt-2 mb-3" style="display:<?php echo (isset($mode)) ? 'block' : 'none' ?>" id="preview_lable">Preview</h4>

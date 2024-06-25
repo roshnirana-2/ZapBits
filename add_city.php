@@ -98,7 +98,7 @@ if (isset($_REQUEST["save"])) {
                     <?php echo isset($mode) && $mode == 'view' ? 'disabled' : ''?> required>
                         <option value="">Choose State</option>
                         <?php
-                            $stmt = $obj->con1->prepare("SELECT * FROM `state` WHERE state_name!='no state'");
+                            $stmt = $obj->con1->prepare("SELECT * FROM `state` WHERE state_name!='no state' AND `stats`='Enable'");
                             $stmt->execute();
                             $Resp = $stmt->get_result();
                             $stmt->close();

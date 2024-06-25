@@ -115,7 +115,7 @@ if (isset($_REQUEST["save"])) {
                             $user_ids_array = explode(",",$user_id);
                         }
                             $stmt = $obj->con1->prepare("SELECT CONCAT(firstname, ' ', lastname) AS full_name, customer_reg.*
-                            FROM customer_reg;");
+                            FROM customer_reg WHERE `status`='Enable';");
                             $stmt->execute();
                             $Resp = $stmt->get_result();
                             $stmt->close();
@@ -139,7 +139,7 @@ if (isset($_REQUEST["save"])) {
                             <select class="form-select text-gray-500" name="product" id="product" required>
                                 <option value="">Choose</option>
                                 <?php
-                            $stmt = $obj->con1->prepare("SELECT * FROM `product_category` ");
+                            $stmt = $obj->con1->prepare("SELECT * FROM `product_category` WHERE `stats`='Enable'");
                             $stmt->execute();
                             $Resp = $stmt->get_result();
                             $stmt->close();

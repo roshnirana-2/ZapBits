@@ -101,7 +101,7 @@ if (isset($_REQUEST["save"])) {
                     <?php echo isset($mode) && $mode == 'view' ? 'disabled' : ''?> required>
                         <option value="">Choose City</option>
                         <?php
-                            $stmt = $obj->con1->prepare("SELECT * FROM `city` WHERE city_name!='no city'");
+                            $stmt = $obj->con1->prepare("SELECT * FROM `city` WHERE city_name!='no city' AND `status`='Enable'");
                             $stmt->execute();
                             $Resp = $stmt->get_result();
                             $stmt->close();

@@ -182,7 +182,7 @@ if (isset($_REQUEST["flg"]) && $_REQUEST["flg"] == "del") {
                     <?php echo isset($mode) && $mode == 'view' ? 'disabled' : ''?> required>
                         <option value="">Choose Category</option>
                         <?php
-                            $stmt = $obj->con1->prepare("SELECT * FROM `blog_category`");
+                            $stmt = $obj->con1->prepare("SELECT * FROM `blog_category` WHERE `status`='Enable'");
                             $stmt->execute();
                             $Resp = $stmt->get_result();
                             $stmt->close();

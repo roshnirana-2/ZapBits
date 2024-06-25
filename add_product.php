@@ -200,7 +200,7 @@ if (isset($_REQUEST["flg"]) && $_REQUEST["flg"] == "del") {
 					<select class="form-select text-black" name="v_id" id="v_id" <?php echo isset($mode) && $mode == 'view' ? 'disabled' : '' ?> required>
 						<option value="">Select Vendor</option>
 						<?php
-						$stmt = $obj->con1->prepare("SELECT * FROM `vendor_reg`");
+						$stmt = $obj->con1->prepare("SELECT * FROM `vendor_reg` WHERE `stats`='Enable'");
 						$stmt->execute();
 						$Resp = $stmt->get_result();
 						$stmt->close();
@@ -220,7 +220,7 @@ if (isset($_REQUEST["flg"]) && $_REQUEST["flg"] == "del") {
 					<select class="form-select text-black" name="c_id" id="c_id" <?php echo isset($mode) && $mode == 'view' ? 'disabled' : '' ?> required>
 						<option value="">Select Category</option>
 						<?php
-						$stmt = $obj->con1->prepare("SELECT * FROM `product_category`");
+						$stmt = $obj->con1->prepare("SELECT * FROM `product_category` WHERE `stats`='Enable'");
 						$stmt->execute();
 						$Resp = $stmt->get_result();
 						$stmt->close();
