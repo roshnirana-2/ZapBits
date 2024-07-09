@@ -103,7 +103,7 @@ if (isset($_REQUEST['logout'])) {
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Justping- Admin</title>
+    <title>ZAPBITS- Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="assets/images/pds_favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -201,7 +201,7 @@ if (isset($_REQUEST['logout'])) {
                         <a class="main-logo flex shrink-0 items-center justify-center">
                             <img class="w-8 ml-[5px] flex-none" src="assets/images/polygon_logo.png" alt="image" />
                             <span
-                                class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">JUSTPING</span>
+                                class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">ZAPBITS</span>
                         </a>
                         <a href="javascript:;"
                             class="collapse-icon flex h-8 w-8 items-center rounded-full transition duration-300 hover:bg-gray-500/10 rtl:rotate-180 dark:text-white-light dark:hover:bg-dark-light/10"
@@ -591,7 +591,7 @@ if (isset($_REQUEST['logout'])) {
                             <a class="main-logo flex shrink-0 items-center justify-center">
                                 <img class="w-8 ml-[5px] flex-none" src="assets/images/polygon_logo.png" alt="image" />
                                 <span
-                                    class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">JUSTPING</span>
+                                    class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">ZAPBITS</span>
                             </a>
 
                             <a href="javascript:;"

@@ -77,7 +77,10 @@ if (isset($_REQUEST["flg"]) && $_REQUEST["flg"] == "del") {
                                     [
                                         '<?php echo $i; ?>', 
                                         '<?php echo $row["type"]; ?>',
-                                        '<?php echo $row["date_time"]; ?>', 
+                                        '<?php 
+                                        $date = date_create($row['date_time']);
+                                        echo date_format($date, "d-m-Y h:i A");
+                                     ?>',
                                         getActions(<?php echo $row["id"]; ?>,'<?php echo $row["type"];?>')
                                         ],
                                     <?php $i++;}

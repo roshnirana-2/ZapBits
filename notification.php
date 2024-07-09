@@ -72,7 +72,10 @@ document.addEventListener('alpine:init', () => {
                             '<?php echo $row["notification_type"]; ?>',
                             '<?php echo $row["msg"]; ?>',
                             '<?php echo $row["name"]; ?>',
-                            '<?php echo $row["date_time"]; ?>',
+                            '<?php 
+                                        $date = date_create($row['date_time']);
+                                        echo date_format($date, "d-m-Y h:i A");
+                                     ?>',
                             getActions(<?php echo $row["id"]; ?>)
                         ],
                         <?php

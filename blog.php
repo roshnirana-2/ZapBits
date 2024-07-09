@@ -70,7 +70,7 @@ document.addEventListener('alpine:init', () => {
         init() {
             this.datatable = new simpleDatatables.DataTable('#myTable', {
                 data: {
-                    headings: ['Sr.No.', 'Title', 'Image', 'Description', 'Status',
+                    headings: ['Sr.No.', 'Title', 'Image', 'Status',
                     'Publish Status','Date-Time', 'Action'
                     ],
                     data: [
@@ -101,8 +101,6 @@ document.addEventListener('alpine:init', () => {
                                             <video src="images/blog_image/<?php echo addslashes($row["image"]); ?>" height="200" width="200" style="display:<?php (in_array($extn, $vd_array)) ? 'block' : 'none' ?>" class="object-cover shadow rounded" controls></video>
                                         <?php } ?>`,
 
-
-                            '<span class="wrap-text"><?php echo addslashes($row["short_desc"]); ?></span>',
 
                             '<span class="badge whitespace-nowrap" :class="{\'badge-outline-success\': \'<?php echo $row["status"]; ?>\' === \'Enable\', \'badge-outline-danger\': \'<?php echo $row["status"]; ?>\' === \'Disable\'}"><?php echo $row["status"]; ?></span>',
 
